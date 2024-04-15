@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+}
+body,
+section {
+  overflow-x: hidden;
+  block-size: 100%;
+  font-size: 16px;
+}
+
+/* 设置 html 元素的纵向滚动方式为强制性的 */
+html {
+  scroll-snap-type: y mandatory;
+}
+
+/* 设置 section 元素的滚动对齐方式为起始位置，并且始终停止滚动 */
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 设置.box的宽度为视口宽度，高度为视口高度，相对定位，显示为flex布局， 
+        溢出隐藏 */
+.box {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 设置.box-block的绝对定位，顶部和左侧均为0，宽度和高度为100%， 
+        背景尺寸为120%，背景不重复，背景位置为中心顶部，使用3D变换， 
+        will-change属性为background-position */
+.box-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  transform: translate3d(0, 0, 0);
+  will-change: background-position;
+}
+
+/* 在最大宽度为1200px的媒体查询下，将.box-block的背景尺寸设置为150%， 
+        .box的高度设置为50vh */
+@media (max-width: 1200px) {
+  .box-block {
+    background-size: 400%;
+  }
+
+  .box {
+    height: 100vh;
+  }
+}
+
+/* 设置.box-block的伪元素::before的绝对定位，顶部和左侧均为0，内容为空， 
+        显示为块级元素， 宽度和高度为100%，背景颜色为rgba(0, 0, 0, 0.35)， 
+        背景颜色的过渡效果为0.3秒的ease过渡 */
+.box-block::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  transition: background-color 0.3s ease;
+}
+
+/* 当鼠标悬停在.box上时，将.box-block的伪元素::before的 
+        背景颜色设置为rgba(0, 0, 0, 0.2) */
+.box:hover .box-block::before {
+  background-color: rgba(47,47,47,0.6);
+}
+
+/* 设置.box-text的相对定位，宽度和高度为100%，显示为flex布局， 
+        垂直居中和水平居中，主轴为纵向 */
+.box-text {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "优设标题黑";
+  color: #f1f1f1;
+}
+
+/* 设置.box-text内的.text-title的字体大小为24px， 
+        底部外边距为20px */
+.box-text .text-title {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.box:nth-child(1n) .box-block {
+  background-image: url("./18.jpg");
+}
+
+.box:nth-child(2n) .box-block {
+  background-image: url("./13.jpg");
+  background-position: 1000px 1100px;
+}
+
+.box:nth-child(3n) .box-block {
+  background-image: url("./20.jpg");
+}
+
+.box:nth-child(4n) .box-block {
+  background-image: url("./21.jpg");
+}
+
+.box:nth-child(5n) .box-block {
+  background-image: url("./26.jpg");
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle; /* 垂直居中对齐 */
+
+  border: 6px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+input[type="radio"]:hover {
+  border-color: #999;
+}
+
+input[type="radio"]:checked {
+  background-color: #ffd700;
+  border-color: #ffd700;
+}
+
+input[type="radio"]:checked:hover {
+  background-color: #ffd700;
+  border-color: #ffd700;
+}
+
+input[type="radio"]:active {
+  transform: scale(0.9);
+}
+
+.f{
+  /*背景框*/
+  position: absolute;
+  width: 65%;
+  height: 70%;
+  padding: 25px;
+  top: 5%;
+  left: 13%;
+  background-color: rgba(187, 187, 187, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.e{
+  /*背景框*/
+  position: absolute;
+  width: 90%;
+  height: 80%;
+  padding: 25px;
+  
+  left: 2%;
+  
+}
+
+.a{
+  /*背景框*/
+  position: absolute;
+  width: 75%;
+  height:5%;
+  padding: 25px;
+  top: 5%;
+  left:17%;
+  
+}@media screen and (max-width: 1079px) {
+  .a {
+  font-size: 20px;
+  width: 60%;
+  height:10%;}
+
+}
+	
+.b{
+  /*背景框*/
+  position: absolute;
+  width: 75%;
+  height: 5%;
+  padding: 25px;
+  top: 25%;
+  left:17%;
+  
+}
+@media screen and (max-width: 1079px) {
+  .b {
+  font-size: 20px;
+  width: 60%;
+  height:10%;}
+
+}
+.c{
+  /*背景框*/
+  position: absolute;
+  width: 75%;
+  height: 5%;
+  padding: 25px;
+  top: 45%;
+  left:17%;
+ 
+}@media screen and (max-width: 1079px) {
+  .c {
+  font-size: 20px;
+  width: 60%;
+  height:10%;}
+
+}
+.d{
+  /*背景框*/
+  position: absolute;
+  width: 75%;
+  height: 5%;
+  padding: 25px;
+  top: 65%;
+  left:17%;
+  
+
+}
+
+.g{
+  /*背景框*/
+  position: absolute;
+  width: 4%;
+  height: 5%;
+  padding: 25px;
+  top: 5.5%;
+  left:2%;
+  
+
+}.h{
+  /*背景框*/
+  position: absolute;
+  width: 4%;
+  height: 5%;
+  padding: 25px;
+  top: 25.5%;
+  left:2%;
+  
+
+}
+.y{
+  /*背景框*/
+  position: absolute;
+  width: 4%;
+  height: 5%;
+  padding: 25px;
+  top: 45.5%;
+  left:2%;
+  
+
+}
+.t{
+  /*背景框*/
+  position:absolute;
+  width: 90%;
+  height: 50%;
+  top: 80%;
+  left:40%;
+  
+
+}
+.k{
+  /*背景框*/
+  position: absolute;
+  width: 4%;
+  height: 5%;
+  padding: 25px;
+  top: 65.5%;
+  left:2%;
+  
+}
+@media screen and (max-width: 1079px) {
+  .d {
+  font-size: 20px;
+  width: 60%;
+  height:10%;}
+
+}
+
+.anniu{
+  /*背景框*/
+  position: absolute;
+ 
+  
+  top: 50%;
+  left: 36%;
+}
+
+
+
+h5 {
+  font-size: 36px;}
+
+@media screen and (max-width: 1079px) {
+   h1 {font-size: 30px; /* 当窗口宽度小于480px时字体再次变小 */}
+ 
+  h5 {font-size: 18px;}
+
+}
+
+
+
+  
+  
