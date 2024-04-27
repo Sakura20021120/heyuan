@@ -107,24 +107,24 @@ section {
 }
 
 .box:nth-child(1n) .box-block {
-  background-image: url("https://gitee.com/HeYuanSuki/su/raw/4c406655c04d77f8cb6ced5889321b68e33bc8ef/18.jpg");
+  background-image: url("./image/18.jpg");
 }
 
 .box:nth-child(2n) .box-block {
-  background-image: url("https://gitee.com/HeYuanSuki/su/raw/4c406655c04d77f8cb6ced5889321b68e33bc8ef/13.jpg");
+  background-image: url("./image/13.jpg");
   background-position: 1000px 1100px;
 }
 
 .box:nth-child(3n) .box-block {
-  background-image: url("https://gitee.com/HeYuanSuki/su/raw/4c406655c04d77f8cb6ced5889321b68e33bc8ef/20.jpg");
+  background-image: url("./image/20.jpg");
 }
 
 .box:nth-child(4n) .box-block {
-  background-image: url("https://gitee.com/HeYuanSuki/su/raw/4c406655c04d77f8cb6ced5889321b68e33bc8ef/21.jpg");
+  background-image: url("./image/21.jpg");
 }
 
 .box:nth-child(5n) .box-block {
-  background-image: url("https://gitee.com/HeYuanSuki/su/raw/4c406655c04d77f8cb6ced5889321b68e33bc8ef/26.jpg");
+  background-image: url("./image/26.jpg");
 }
 
 input[type="radio"] {
@@ -165,14 +165,36 @@ input[type="radio"]:active {
   /*背景框*/
   position: absolute;
   width: 65%;
-  height: 70%;
+  height: 75%;
   padding: 25px;
-  top: 5%;
-  left: 13%;
+  top: 3%;
+  left: 18%;
   background-color: rgba(187, 187, 187, 0.2);
   border-radius: 12px;
   overflow: hidden;
 }
+.ab{
+  /*背景框*/
+  position: absolute;
+  width: 65%;
+  height: 75%;
+  padding: 25px;
+  top: 3%;
+  left: 18%;
+  background-color: rgba(187, 187, 187, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.aa{
+  /*背景框*/
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  padding: 25px;
+  
+  left: 2%;
+}
+
 .x{
   /*背景框*/
   position: absolute;
@@ -183,10 +205,11 @@ input[type="radio"]:active {
   left: 13%;
 
 }
+
 .e{
   /*背景框*/
   position: absolute;
-  width: 90%;
+  width: 95%;
   height: 80%;
   padding: 25px;
   
@@ -208,7 +231,32 @@ input[type="radio"]:active {
   font-size: 20px;
   width: 60%;
   height:10%;}
+  .f { width: 80%;
+    height: 90%;
+    left: 10%;}
+  .aa{
+      /*背景框*/
+      
+      width: 95%;
+      height: 90%;
+    }
+    .ab{
+      /*背景框*/
+      left: 10%;
+      width: 80%;
+      height: 70%;
+    }
+	
+    .x{
+  /*背景框*/
+  position:relative;
+  width: 80%;
+  
+  padding: 0px;
+  top: 0%;
+  
 
+}
 }
 	
 .b{
@@ -228,6 +276,11 @@ input[type="radio"]:active {
   height:10%;}
 
 }
+.h2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+     }
 .c{
   /*背景框*/
   position: absolute;
@@ -294,10 +347,11 @@ input[type="radio"]:active {
   width: 90%;
   height: 50%;
   top: 80%;
-  left:40%;
+  left:45%;
   
 
 }
+
 .k{
   /*背景框*/
   position: absolute;
@@ -313,7 +367,14 @@ input[type="radio"]:active {
   font-size: 20px;
   width: 60%;
   height:10%;}
-
+  .t{
+    /*背景框*/
+    
+    top: 74%;
+    left:40%;
+    
+  
+  }
 }
 
 .anniu{
@@ -335,6 +396,10 @@ h5 {
    h1 {font-size: 30px; /* 当窗口宽度小于480px时字体再次变小 */}
  
   h5 {font-size: 18px;}
+	.two{
+        display: none;
+    }
+	
 
 }
 
@@ -375,6 +440,7 @@ h5 {
 .z {
     font-family: "PingFang SC",Arial,"微软雅黑",sans-serif;
     line-height: 1.5;
+    top: 0%;
 }
 .btn {
     display: inline-block;

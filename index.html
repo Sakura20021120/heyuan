@@ -100,21 +100,32 @@
             position: absolute;
             z-index: -1;
         }
+		.btn{
+            width: 100%;
+            opacity: 0;
+            transition: all 0.3s;
+            position: absolute;
+            z-index: -1;
+        }
 
         .card:hover .character {
             opacity: 1;
-            transform: translate3d(0%, -20%, 100px);
+            transform: translate3d(0%, -15%, 100px);
         }
 
         .card:hover {
             transform: translateY(40px);
         }
-        
+       .card:hover .btn {
+            opacity: 1;
+            transform: translate3d(0%, -15%, 100px);
+        }
+
     </style>
 
 </head>
 <body>
-
+  
     <section class="box">
         <div class="box-block"></div>
         <div class="box-text">
@@ -130,17 +141,25 @@
                 <img src="./image/01.png" alt="" class="cover-image">
             </div>
             <img src="./image/text-1.png" alt="" class="title">
-            <img src="./image/02.png" alt="" class="character">
-        </div>
-
-        <div class="card">
+            <img src="./image/02.png" alt="" class="character" >
+			<a href="index1.html"  class="btn" >开始学习</a>
+			
+			
+</div><div class="content">
+           
+    
+ </div>
+         <div class="two"><div class="card">
+			
             <div class="wrapper">
                 <img src="./image/03.png" alt="" class="cover-image">
             </div>
             <img src="./image/text-2.png" alt="" class="title">
             <img src="./image/04.png" alt="" class="character">
-        </div>
-    </div>
+			<a href="index1.html"  class="btn" ><h2>开始学习</h2></a>
+			</div> 
+					 </div>
+    
 					
 				
 </div>
@@ -152,26 +171,7 @@
 	</div>
     </section>
 
-    <section class="box">
-        <div class="box-block"></div>
-        <div class="box-text">
-            <div class="text-title">
-				
-       
-        <div class="video-container">
-            <img src="./image/01.png">
-			
-        </div>
-        <div class="content">
-           
-           <div class="z"><a href="index1.html"  class="btn" >开始学习</a></div> 
-        </div>
-     
     
-
-		 </div>
-	</div>
-    </section>
 
     
 

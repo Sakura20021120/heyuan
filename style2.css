@@ -32,7 +32,20 @@
 .rating__stars {
   display: flex;
   padding-bottom: 0.375em;
-  position: relative;
+  position:absolute;
+  
+  top:90% ;
+  
+  left: 45%;
+}@media screen and (max-width: 1079px) {
+  .rating__stars {
+  font-size: 20px;
+  width: 60%;
+  height:10%;
+  left: 25%;
+
+}
+
 }
 .rating__star {
   display: block;
@@ -194,3 +207,5 @@
 .rating__input-5{
    display: none;
   }
+
+
