@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实时数据仪表盘</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .slider-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .charts-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        input[type="range"] {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slider-container">
+            <h2>当前年份: <span id="currentYear">2000</span></h2>
+            <input type="range" id="yearSlider" min="2000" max="2023" value="2000">
+        </div>
+
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>类别</th>
+                    <th>数值</th>
+                    <th>占比</th>
+                    <th>趋势</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="charts-container">
+            <div style="width: 60%">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div style="width: 40%">
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 生成模拟数据
+        const categories = ['电子产品', '服装', '食品', '书籍'];
+        const data = {};
+        
+        for (let year = 2000; year <= 2023; year++) {
+            data[year] = {};
+            categories.forEach(category => {
+                data[year][category] = Math.floor(Math.random() * 1000) + 100;
+            });
+        }
+
+        // 初始化图表
+        let lineChart, pieChart;
+        
+        function initializeCharts() {
+            const ctxLine = document.getElementById('lineChart').getContext('2d');
+            const ctxPie = document.getElementById('pieChart').getContext('2d');
+
+            // 折线图配置
+            lineChart = new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: categories.map((cat, i) => ({
+                        label: cat,
+                        data: [],
+                        borderColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'][i],
+                        tension: 0.1
+                    }))
+                }
+            });
+
+            // 饼图配置
+            pieChart = new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        data: categories.map(cat => data[2000][cat]),
+                        backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { position: 'right' }
+                    }
+                }
+            });
+        }
+
+        // 更新所有可视化元素
+        function updateVisualization(year) {
+            const currentData = data[year];
+            const total = Object.values(currentData).reduce((sum, val) => sum + val, 0);
+            const prevYearData = data[year-1] || {};
+
+            // 更新表格
+            const tbody = document.querySelector('#data-table tbody');
+            tbody.innerHTML = categories.map(cat => {
+                const value = currentData[cat];
+                const percent = ((value / total) * 100).toFixed(1);
+                const prevValue = prevYearData[cat] || 0;
+                const trend = value > prevValue ? '↑' : value < prevValue ? '↓' : '→';
+                const color = value > prevValue ? 'green' : value < prevValue ? 'red' : 'gray';
+                
+                return `<tr>
+                    <td>${cat}</td>
+                    <td>${value}</td>
+                    <td>${percent}%</td>
+                    <td style="color: ${color}">${trend}</td>
+                </tr>`;
+            }).join('');
+
+            // 更新饼图
+            pieChart.data.datasets[0].data = categories.map(cat => currentData[cat]);
+            pieChart.data.labels = categories.map(cat => 
+                `${cat} (${((currentData[cat]/total)*100).toFixed(1)}%)`
+            );
+            pieChart.update();
+
+            // 更新折线图
+            const years = Object.keys(data).map(Number).sort((a,b) => a-b);
+            const currentIndex = years.indexOf(Number(year));
+            
+            lineChart.data.labels = years.slice(0, currentIndex + 1);
+            categories.forEach((cat, i) => {
+                lineChart.data.datasets[i].data = years
+                    .slice(0, currentIndex + 1)
+                    .map(y => data[y][cat]);
+            });
+            lineChart.update();
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCharts();
+            updateVisualization(2000);
+            
+            // 滑动条事件监听
+            document.getElementById('yearSlider').addEventListener('input', (e) => {
+                const year = e.target.value;
+                document.getElementById('currentYear').textContent = year;
+                updateVisualization(year);
+            });
+        });
+    </script>
+</body>
+</html>
